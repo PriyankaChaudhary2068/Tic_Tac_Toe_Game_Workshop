@@ -11,7 +11,7 @@ public class TicTacToeGame {
 		  static char player;
 		  static char computer;
 		  private static int playLocation;
-          	
+		 
              
           public static void createBoard()
               {
@@ -66,6 +66,20 @@ public class TicTacToeGame {
         			return false;
         		}
         	}
+        	
+        	
+        	public static void checkToss() {
+        		
+        		double tossResult = Math.floor(Math.random() * 10) % 2;
+        		System.out.println("\nChoose 1 for Heads or 2 for Tails");
+        		int coinSelect = scanner.nextInt();
+        		if (coinSelect == tossResult) {
+        			System.out.println("\nPlayer Won The Toss! Player Starts");
+        		} 
+        		else {
+        			System.out.println("\nComputer Won The Toss! Computer Starts");
+        		}
+        	}
               
               
               public static void main(String[] args) {
@@ -75,6 +89,7 @@ public class TicTacToeGame {
             	  getPlayerChoice();
             	  showBoard();
             	  userMove();
+            	  checkToss();
           }
 
 }
