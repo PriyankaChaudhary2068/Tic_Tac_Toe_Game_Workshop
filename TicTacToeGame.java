@@ -178,6 +178,12 @@ public class TicTacToeGame {
         		} else
         			return false;
         	}
+         	
+         	
+         	public static void blockOpponent() {
+        		
+        	}
+         	
 
         	public static boolean isEmpty(int location) {
         		return board[location] == ' ';
@@ -197,6 +203,8 @@ public class TicTacToeGame {
         			System.out.println("\nComputer Won The Toss! Computer Starts");
         		}
         	}
+        	
+        	
 
         	public static boolean checkBoardFull() {
         		if ((board[1] != ' ') && (board[2] != ' ') && (board[3] != ' ') && (board[4] != ' ') && (board[5] != ' ')
