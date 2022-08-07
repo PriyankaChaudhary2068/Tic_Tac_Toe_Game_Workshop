@@ -71,23 +71,47 @@ public class TicTacToeGame {
         	public static void computerMove() {
         		System.out.println("\nComputer Is Playing");
         		do {
-        			int cornerLocation = random.nextInt(4) + 1;		
+        			occupyCorner();
+        			if (occupyCenter()) {
+        			}
+        			if (occupyOther()) {
+        			}
         			if (predictWinLocationAndBlock()) {
         			}
-        			else {
-        				if(cornerLocation == 1)
-        					playLocation = 1;
-        				if(cornerLocation == 2)
-        					playLocation = 3;
-        				if(cornerLocation == 3)
-        					playLocation = 7;
-        				if(cornerLocation == 4)
-        					playLocation = 9;
-        			}
-        			
         		} while (!isEmpty(playLocation));
+
         		board[playLocation] = computer;
         		showBoard();
+        	}
+        	
+        	public static void occupyCorner() {
+
+        		int[] corners = { 1, 3, 7, 9 };
+        		int corner = random.nextInt(3);
+        		playLocation = corners[corner];
+        	}
+
+        	
+        	public static boolean occupyCenter() {
+        		if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ') {
+        			if (isEmpty(5)) {
+        				playLocation = 5;
+        				return true;
+        			}
+        		}
+        		return false;
+        	}
+
+        	public static boolean occupyOther() {
+        		if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ' && board[5] != ' ') {
+        			int[] notCorners = { 2, 4, 6, 8 };
+        			int notCorner = random.nextInt(3);
+        			if (isEmpty(notCorners[notCorner])) {
+        				playLocation = notCorners[notCorner];
+        				return true;
+        			}
+        		}
+        		return false;
         	}
         	
         	public static boolean predictWinLocationAndBlock() {
@@ -298,8 +322,7 @@ public class TicTacToeGame {
         		if (coinSelect == tossResult) {
         			System.out.println("\nPlayer Won The Toss! Player Starts");
         			playerWinToss = true;
-        		} 
-        		else {
+        		} else {
         			playerWinToss = false;
         			System.out.println("\nComputer Won The Toss! Computer Starts");
         		}
@@ -338,8 +361,7 @@ public class TicTacToeGame {
         				|| (board[2] == computer && board[5] == computer && board[8] == computer)
         				|| (board[3] == computer && board[6] == computer && board[9] == computer)
         				|| (board[1] == computer && board[5] == computer && board[9] == computer)
-        				|| (board[3] == computer && board[5] == computer && board[7] == computer))
-        		{
+        				|| (board[3] == computer && board[5] == computer && board[7] == computer)) {
         			System.out.println("Computer is the WINNER");
         			isWinner = true;
         			return true;
@@ -354,7 +376,7 @@ public class TicTacToeGame {
         				userMove();
         				if (!checkBoardFull())
         					computerMove();
-        			} 
+        			}
         			else {
         				computerMove();
         				if (!checkBoardFull())
@@ -362,23 +384,18 @@ public class TicTacToeGame {
         			}
         		} while (!checkWinner() && !checkBoardFull());
         		if (checkBoardFull() && !checkWinner())
-        			System.out.println("Game TIE");
+        			System.out.println("Game TIE.");
 
         	}
         	
         	public static void main(String[] args) {
 
-        		System.out.println("Welcome To The Game Of Tic Tac Toe \n");
+        		System.out.println(" Welcome To The Game Of Tic Tac Toe \n");
         		createBoard();
         		getPlayerChoice();
         		checkToss();
         		startGame();
 
         	}
-            
-}
 
-            
-             
-              
-                    
+        }
