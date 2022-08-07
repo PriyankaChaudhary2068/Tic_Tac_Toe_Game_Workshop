@@ -56,6 +56,16 @@ public class TicTacToeGame {
           			System.out.println("Invalid Choice");
           		}
           	}
+            
+
+        	public static boolean isEmpty() {
+        		if (board[playLocation] == ' ') {
+        			return true;
+        		} 
+        		else {
+        			return false;
+        		}
+        	}
               
               
               public static void main(String[] args) {
