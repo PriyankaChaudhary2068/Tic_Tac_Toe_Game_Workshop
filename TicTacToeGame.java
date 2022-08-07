@@ -306,7 +306,8 @@ public class TicTacToeGame {
         		if (board[7] == player && board[5] == player && board[3] == ' ') {
         			playLocation = 3;
         			return true;
-        		} else
+        		} 
+        		else
         			return false;
         	}
         	public static boolean isEmpty(int location) {
@@ -361,7 +362,8 @@ public class TicTacToeGame {
         				|| (board[2] == computer && board[5] == computer && board[8] == computer)
         				|| (board[3] == computer && board[6] == computer && board[9] == computer)
         				|| (board[1] == computer && board[5] == computer && board[9] == computer)
-        				|| (board[3] == computer && board[5] == computer && board[7] == computer)) {
+        				|| (board[3] == computer && board[5] == computer && board[7] == computer))
+        		{
         			System.out.println("Computer is the WINNER");
         			isWinner = true;
         			return true;
@@ -376,17 +378,17 @@ public class TicTacToeGame {
         				userMove();
         				if (!checkBoardFull())
         					computerMove();
-        			}
-        			else {
+        			} else {
         				computerMove();
         				if (!checkBoardFull())
         					userMove();
         			}
         		} while (!checkWinner() && !checkBoardFull());
         		if (checkBoardFull() && !checkWinner())
-        			System.out.println("Game TIE.");
+        			System.out.println("Board is FULL! Game TIE");
 
         	}
+        	
         	
         	public static void main(String[] args) {
 
